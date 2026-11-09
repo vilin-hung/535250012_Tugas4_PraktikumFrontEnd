@@ -1,50 +1,94 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
+import Carousel from "react-bootstrap/Carousel";
+
+interface Slide {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  buttonText: string;
+  buttonHref: string;
+}
+
+const slides: Slide[] = [
+  {
+    eyebrow: "WELCOME TO VILMUSE STUDIO",
+    title: "Let your music bloom.",
+    subtitle:
+      "Discover your musical potential through piano lessons designed around your own pace.",
+    imageUrl: "/images/piano-duet.jpg",
+    buttonText: "Explore our programs",
+    buttonHref: "#programs",
+  },
+  {
+    eyebrow: "LEARN • EXPLORE • GROW",
+    title: "Find the joy in every note.",
+    subtitle:
+      "Build a strong musical foundation, understand the language of music, and enjoy every step.",
+    imageUrl: "/images/piano.jpg",
+    buttonText: "Get to know us",
+    buttonHref: "#about",
+  },
+  {
+    eyebrow: "MAKE EVERY MOMENT COUNT",
+    title: "Your stage is waiting.",
+    subtitle:
+      "Celebrate your progress, share your passion, and grow your confidence through performance.",
+    imageUrl: "/images/piano-perform.jpg",
+    buttonText: "Start your journey",
+    buttonHref: "#contact",
+  },
+];
 
 export default function HeroSection() {
   return (
-    <section className="hero-section">
-      <div className="hero-content">
-        <p className="eyebrow">WELCOME TO VILMUSE STUDIO</p>
+    <section id="home" className="vm-hero">
+      <Carousel
+        className="vm-carousel"
+        fade
+        interval={5000}
+        pause="hover"
+        controls
+        indicators
+        keyboard
+      >
+        {slides.map((slide) => (
+          <Carousel.Item key={slide.eyebrow}>
+            <div
+              className="vm-slide"
+              style={{
+                backgroundImage: `url("${slide.imageUrl}")`,
+              }}
+            >
+              <div className="vm-slide-overlay" />
 
-        <h1>
-          Let your
-          <br />
-          <span>music bloom</span>
-        </h1>
+              <div className="vm-slide-content">
+                <p className="vm-hero-eyebrow">
+                  {slide.eyebrow}
+                </p>
 
-        <p className="hero-description">
-          Feel the Music, Feel the Fun!
-          <br />
-          Discover your musical potential through piano and music theory lessons designed for your own pace
-        </p>
+                <h1>{slide.title}</h1>
 
-        <div className="hero-actions">
-          <Link href="/programs" className="button-primary">
-            Explore our programs →
-          </Link>
+                <p className="vm-slide-description">
+                  {slide.subtitle}
+                </p>
 
-          <Link href="/about" className="button-secondary">
-            Get to know us
-          </Link>
-        </div>
+                <a
+                  className="vm-button"
+                  href={slide.buttonHref}
+                >
+                  {slide.buttonText} →
+                </a>
+              </div>
 
-        <p className="hero-note">
-          It&lsquo;s never too late to start your musical journey
-        </p>
-      </div>
-
-      <div className="hero-visual">
-        <div className="hero-photo">
-          <Image
-            src="/images/piano.jpg"
-            alt="Piano at Vilmuse Studio"
-            width={600}
-            height={700}
-            priority
-          />
-        </div>
-      </div>
+              <span className="vm-slide-index">
+                VILMUSE STUDIO / MUSIC FOR EVERY MOMENT
+              </span>
+            </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
     </section>
   );
 }

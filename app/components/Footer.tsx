@@ -1,43 +1,48 @@
-
-import Link from "next/link";
-
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="footer-content">
-        <div className="footer-brand">
-          <Link href="/" className="footer-logo">
-            vilmuse<span> ♫</span>
-          </Link>
+    <footer id="contact" className="vm-footer">
+
+      <div className="vm-footer-main">
+
+        <div className="vm-footer-brand">
+          <a href="#home" className="vm-footer-logo">
+            vilmuse<span>.</span>
+          </a>
 
           <p>
             Feel the Music, Feel the Fun!
             <br />
-            Let your musical journey bloom  ✿
+            Let your musical journey bloom.
           </p>
         </div>
 
-        <div className="footer-links">
+        <div className="vm-footer-column">
           <h3>Explore</h3>
-          <Link href="/">Home</Link>
-          <Link href="/about">About Us</Link>
-          <Link href="/programs">Programs</Link>
-          <Link href="/team">Our Team</Link>
+          <a href="#about">About the studio</a>
+          <a href="#programs">Our programs</a>
+          <a href="#journey">Our approach</a>
         </div>
 
-        <div className="footer-contact">
-          <h3>Stay in tune ♡</h3>
-          <p>Have questions about our lessons?</p>
+        <div className="vm-footer-column">
+          <h3>Get in touch</h3>
+          <p>Have questions about lessons?</p>
           <a href="mailto:hello@vilmuse.com">
             hello@vilmuse.com
           </a>
         </div>
+
       </div>
 
-      <div className="footer-bottom">
-        <p>© 2026 Vilmuse Studio. Made with ♡ and music.</p>
-        <p>Keep playing, keep growing</p>
+      <div className="vm-footer-bottom">
+        <span>
+          © 2026 Vilmuse Studio. Made with ♡ and music.
+        </span>
+
+        <span>
+          Keep playing, keep growing.
+        </span>
       </div>
+
     </footer>
   );
 }
